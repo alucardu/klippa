@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiKey: 'APyMw4ECC63aJN2mgBTj5YbkrcDOWMOO',
-  parseDocumentUrl: 'https://custom-ocr.klippa.com/api/v1/parseDocument/'
+  parseDocumentUrl: 'https://custom-ocr.klippa.com/api/v1/parseDocument'
 };
 
 /*

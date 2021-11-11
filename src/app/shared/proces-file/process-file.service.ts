@@ -22,8 +22,7 @@ export class ProcessFileService {
 
   addFile = async (file: File): Promise<Observable<File>> =>  {
     const body = {
-      document: (await this.getBase64(file)).split(',')[1],
-      amount: 5,
+      document: [(await this.getBase64(file)).split(',')[1]],
     }
     return this.http.post<File>(environment.parseDocumentUrl, body, httpOptions)
       .pipe(
