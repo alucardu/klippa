@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let receipt of receipts$ | async; index as i">
+    <p>
+      {{i}}: {{receipt.merchant_name}}
+    </p>
+  </li>
+</ul>
