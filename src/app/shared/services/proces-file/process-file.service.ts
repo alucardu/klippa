@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { ReceiptResponse } from 'src/app/models/klippa.models';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,11 +21,11 @@ const httpOptions = {
 export class ProcessFileService {
   constructor(private http: HttpClient) { }
 
-  addFile = async (file: File): Promise<Observable<File>> =>  {
+  addFile = async (file: File): Promise<Observable<ReceiptResponse>> =>  {
     const body = {
       document: [(await this.getBase64(file)).split(',')[1]],
     }
-    return this.http.post<File>(environment.parseDocumentUrl, body, httpOptions)
+    return this.http.post<ReceiptResponse>(environment.parseDocumentUrl, body, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
