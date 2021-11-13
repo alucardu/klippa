@@ -1,10 +1,14 @@
-<form (submit)='submitForm($event)'>
-  <input
-    type='file'
-    accept="image/png, image/jpeg, .pdf"
-    (change)='handleFileInput($event.target.files)'
-  />
-  <button type='submit' [disabled]='btnDisabled'>Send file</button>
-</form>
+<ngx-dropzone
+  (change)="onSelect($event)"
+  [multiple]="false"
+  accept="image/png, image/jpeg, .pdf"
+  >
+	<ngx-dropzone-label>Voeg hier een bestand toe</ngx-dropzone-label>
+	<ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+		<ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+	</ngx-dropzone-preview>
+</ngx-dropzone>
+
+<button (click)='submit()' [disabled]='btnDisabled'>Opslaan</button>
 
 <app-loader [parentComponent]='componentName'></app-loader>
