@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 import { snackbarReducer } from './state/snackbar-state/snackbar-state.reducers';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       snackbar: snackbarReducer
     }),
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxDropzoneModule
   ],
   providers: [MatSnackBarModule],
   bootstrap: [AppComponent]
