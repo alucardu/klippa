@@ -1,8 +1,7 @@
 import { Component, OnInit, Input  } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import { AppState, Loader } from 'src/app/models/klippa.models';
+import { AppState } from 'src/app/models/klippa.models';
 import { selectLoader } from 'src/app/state/loader-state/loader-state.selectors';
 
 @Component({

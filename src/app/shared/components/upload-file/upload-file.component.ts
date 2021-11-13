@@ -5,6 +5,7 @@ import { Receipt } from 'src/app/models/klippa.models';
 import { ProcessFileService } from 'src/app/shared/services/proces-file/process-file.service';
 import { addReceipt } from 'src/app/state/file-state/file-state.actions';
 import { setLoader } from 'src/app/state/loader-state/loader-state.actions';
+import { setSnackbar } from 'src/app/state/snackbar-state/snackbar-state.actions';
 
 let file: File;
 
@@ -28,10 +29,12 @@ export class UploadFileComponent implements OnInit {
     e.preventDefault();
     (await this.procesFileService.addFile(file))
       .subscribe((receiptResponse) => {
-        this.store.dispatch(setLoader({loading: false}))
         const receipt: Receipt = receiptResponse.data;
+
+        this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
+        this.store.dispatch(setLoader({loading: false}))
         this.store.dispatch(addReceipt({merchant_name: receipt.merchant_name}))
-      })
+      }, (err) => this.store.dispatch(setSnackbar({message: err})))
   }
 
   handleFileInput(files: FileList): void {
