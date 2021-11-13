@@ -1,4 +1,4 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction } from "@ngrx/store";
 import { Receipt } from "src/app/models/klippa.models";
 
 export const addReceipt = createAction(

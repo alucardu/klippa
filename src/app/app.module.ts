@@ -6,19 +6,23 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { UploadFileComponent } from './shared/components/upload-file/upload-file.component';
 import { ViewFilesComponent } from './shared/components/view-files/view-files.component';
-import { receiptReducer }  from './state/file-state/file-state.reducer'
+import { receiptReducer }  from './state/file-state/file-state.reducer';
+import { LoaderComponent } from './shared/components/loader/loader.component'
+import { loaderReducer } from './state/loader-state/loader-state.reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadFileComponent,
-    ViewFilesComponent
+    ViewFilesComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot({
-      receipts: receiptReducer
+      receipts: receiptReducer,
+      loader: loaderReducer
     })
   ],
   providers: [],

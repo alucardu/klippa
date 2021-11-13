@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { selectReceipts } from 'src/app/state/file-state/file-state.selectors';
 import { Observable } from 'rxjs';
-import { AppState, Receipt } from 'src/app/models/klippa.models';
 
+import { AppState, Receipt } from 'src/app/models/klippa.models';
+import { selectReceipts } from 'src/app/state/file-state/file-state.selectors';
 @Component({
   selector: 'app-view-files',
   templateUrl: './view-files.component.html',
