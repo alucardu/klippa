@@ -9,7 +9,7 @@ import { setSnackbar } from 'src/app/state/snackbar-state/snackbar-state.actions
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.sass']
+  styleUrls: ['./upload-file.component.scss']
 })
 
 export class UploadFileComponent implements OnInit {
