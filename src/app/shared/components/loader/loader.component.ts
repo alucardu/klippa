@@ -1,9 +1,4 @@
 import { Component, OnInit, Input  } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-
-import { AppState } from 'src/app/models/klippa.models';
-import { selectLoader } from 'src/app/state/loader-state/loader-state.selectors';
-
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
@@ -11,15 +6,7 @@ import { selectLoader } from 'src/app/state/loader-state/loader-state.selectors'
 })
 
 export class LoaderComponent implements OnInit {
-  @Input() parentComponent?: string;
-
-  loading?: boolean
-
-  constructor(private store: Store<AppState>) {
-    this.store.pipe(select(selectLoader)).subscribe((loader) => {
-      this.loading = loader.loading && loader.parentComponent === this.parentComponent
-    })
-  }
+  @Input() loading?: boolean;
 
   ngOnInit(): void {
   }

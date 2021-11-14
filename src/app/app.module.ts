@@ -8,7 +8,6 @@ import { UploadFileComponent } from './shared/components/upload-file/upload-file
 import { ViewFilesComponent } from './shared/components/view-files/view-files.component';
 import { receiptReducer }  from './state/file-state/file-state.reducer';
 import { LoaderComponent } from './shared/components/loader/loader.component'
-import { loaderReducer } from './state/loader-state/loader-state.reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 import { snackbarReducer } from './state/snackbar-state/snackbar-state.reducers';
@@ -28,7 +27,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HttpClientModule,
     StoreModule.forRoot({
       receipts: receiptReducer,
-      loader: loaderReducer,
       snackbar: snackbarReducer
     }),
     BrowserAnimationsModule,
