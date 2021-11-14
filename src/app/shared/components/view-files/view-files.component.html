@@ -1,7 +1,24 @@
 <ul>
-  <li *ngFor="let receipt of receipts$ | async; index as i">
-    <p>
-      {{i}}: {{receipt.merchant_name}}
-    </p>
+  <li *ngFor="let receipt of receipts$ | async;">
+    <p>Bedrag: {{receipt.amount}}</p>
+    <p>Wisselgeld: {{receipt.amount_change}}</p>
+    <p>Fooi: {{receipt.amount_tip}}</p>
+    <p>Bedrag exc BTW: {{receipt.amountexvat}}</p>
+    <p>Munteenheid: {{receipt.currency}}</p>
+    <p>Bedrijfsnaam: {{receipt.merchant_name}}</p>
+    <p>Aankoopdatum: {{receipt.purchasedate}}</p>
+    <p>Aankooptijd: {{receipt.purchasetime}}</p>
+    <p>BTW bedrag: {{receipt.vatamount}}</p>
+    <p>Producten</p>
+    <ul>
+      <li *ngFor="let lines of receipt.lines">
+        <ul *ngFor="let line of lines.lineitems">
+          <li><p>Product: {{line.title}}</p></li>
+          <li><p>Bedrag: {{line.amount}}</p></li>
+          <li><p>Aantal: {{line.quantity}}</p></li>
+          <li><p>Bedrag elk: {{line.amount_each}}</p></li>
+        </ul>
+      </li>
+    </ul>
   </li>
 </ul>
