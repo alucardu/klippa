@@ -41,6 +41,8 @@ export class UploadFileComponent implements OnInit {
     (await this.procesFileService.addFile(this.files[0]))
     .subscribe((receiptResponse: ReceiptResponse) => {
       const receipt: Receipt = receiptResponse.data;
+      this.files = [];
+      this.btnDisabled = false
 
       this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
       this.store.dispatch(setLoader({loading: false}))
