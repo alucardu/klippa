@@ -13,6 +13,7 @@ import { SnackbarComponent } from './shared/components/snackbar/snackbar.compone
 import { snackbarReducer } from './state/snackbar-state/snackbar-state.reducers';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { FilePreviewComponent } from './shared/components/file-preview/file-preview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     UploadFileComponent,
     ViewFilesComponent,
     LoaderComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    FilePreviewComponent
   ],
   imports: [
     BrowserModule,
