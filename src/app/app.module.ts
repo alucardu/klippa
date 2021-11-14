@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
+import {MaterialModule} from '../material.module';
+
 import { AppComponent } from './app.component';
 import { UploadFileComponent } from './shared/components/upload-file/upload-file.component';
 import { ViewFilesComponent } from './shared/components/view-files/view-files.component';
@@ -33,7 +35,8 @@ import { FilePreviewComponent } from './shared/components/file-preview/file-prev
     }),
     BrowserAnimationsModule,
     MatSnackBarModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MaterialModule
   ],
   providers: [MatSnackBarModule],
   bootstrap: [AppComponent]
