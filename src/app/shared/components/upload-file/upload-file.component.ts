@@ -4,7 +4,6 @@ import { Receipt, ReceiptResponse } from 'src/app/models/klippa.models';
 
 import { ProcessFileService } from 'src/app/shared/services/proces-file/process-file.service';
 import { addReceipt } from 'src/app/state/file-state/file-state.actions';
-import { setLoader } from 'src/app/state/loader-state/loader-state.actions';
 import { setSnackbar } from 'src/app/state/snackbar-state/snackbar-state.actions';
 
 @Component({
@@ -19,8 +18,8 @@ export class UploadFileComponent implements OnInit {
     private procesFileService: ProcessFileService
     ) {}
 
+  loading = false;
   btnDisabled = true;
-  componentName = 'uploadFile'
   files: File[] = [];
 
   onSelect(event: any) {
@@ -45,13 +44,12 @@ export class UploadFileComponent implements OnInit {
       this.btnDisabled = false
 
       this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
-      this.store.dispatch(setLoader({loading: false}))
+      this.loading = false;
       this.store.dispatch(addReceipt({merchant_name: receipt.merchant_name}))
     }, (err: any) => {
-      this.store.dispatch(setLoader({loading: false}))
       this.store.dispatch(setSnackbar({message: err}))
     })
-    this.store.dispatch(setLoader({loading: true, parentComponent: 'uploadFile'}))
+    this.loading = true;
   }
 
   ngOnInit(): void {}
