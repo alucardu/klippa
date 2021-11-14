@@ -20,36 +20,38 @@ export class UploadFileComponent implements OnInit {
 
   loading = false;
   btnDisabled = true;
-  files: File[] = [];
+  file?: File;
 
   onSelect(event: any) {
     if (event.rejectedFiles[0]) {
       this.store.dispatch(setSnackbar({message: 'Incorrect file type selected!'}))
       return
     }
-    this.files = [...event.addedFiles]
+    this.file = [...event.addedFiles][0]
     this.btnDisabled = false
   }
 
-  onRemove(event: any) {
-    this.files.splice(this.files.indexOf(event), 1);
-    this.btnDisabled = true
+  submit = async (): Promise<void> => {
+    if (this.file) {
+      (await this.procesFileService.addFile(this.file))
+      .subscribe((receiptResponse: ReceiptResponse) => {
+        const receipt: Receipt = receiptResponse.data;
+        this.btnDisabled = false
+
+        this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
+        this.loading = false;
+        this.store.dispatch(addReceipt({merchant_name: receipt.merchant_name}))
+        this.clearInput()
+      }, (err: any) => {
+        this.store.dispatch(setSnackbar({message: err}))
+      })
+      this.loading = true;
+    }
   }
 
-  submit = async (): Promise<void> => {
-    (await this.procesFileService.addFile(this.files[0]))
-    .subscribe((receiptResponse: ReceiptResponse) => {
-      const receipt: Receipt = receiptResponse.data;
-      this.files = [];
-      this.btnDisabled = false
-
-      this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
-      this.loading = false;
-      this.store.dispatch(addReceipt({merchant_name: receipt.merchant_name}))
-    }, (err: any) => {
-      this.store.dispatch(setSnackbar({message: err}))
-    })
-    this.loading = true;
+  clearInput = () => {
+    this.btnDisabled = true
+    this.file = null as any
   }
 
   ngOnInit(): void {}

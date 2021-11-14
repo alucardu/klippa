@@ -4,11 +4,13 @@
   accept="image/png, image/jpeg, .pdf"
   >
 	<ngx-dropzone-label>Voeg hier een bestand toe</ngx-dropzone-label>
-	<ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-		<ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+	<ngx-dropzone-preview *ngIf='file' [removable]="true" (removed)="clearInput()">
+		<ngx-dropzone-label>{{ file?.name }}</ngx-dropzone-label>
 	</ngx-dropzone-preview>
 </ngx-dropzone>
 
 <button (click)='submit()' [disabled]='btnDisabled'>Opslaan</button>
 
 <app-loader [loading]='loading'></app-loader>
+
+<app-file-preview [preview]='file'></app-file-preview>
