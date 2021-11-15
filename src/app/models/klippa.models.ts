@@ -58,5 +58,6 @@ export interface Loader {
 }
 
 export interface Snackbar {
+  state: string,
   message: string
 }
