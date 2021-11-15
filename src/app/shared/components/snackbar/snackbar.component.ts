@@ -18,12 +18,13 @@ export class SnackbarComponent implements OnInit {
     private store: Store<AppState>,
     private _snackBar: MatSnackBar
   ) {
-    this.store.pipe(select(selectSnackbar)).subscribe((snackbar) => this.openSnackBar(snackbar.message))
+    this.store.pipe(select(selectSnackbar)).subscribe((snackbar) => this.openSnackBar(snackbar))
   }
 
-  openSnackBar(message: string) {
-    message.length > 0 ? this._snackBar.open(message, 'close', {
-      duration: 3000
+  openSnackBar(snackbar: Snackbar) {
+    snackbar.message.length > 0 ? this._snackBar.open(snackbar.message, 'close', {
+      duration: 3000,
+      panelClass: snackbar.state
     }) : null;
   }
 

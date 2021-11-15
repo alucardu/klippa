@@ -29,7 +29,7 @@ export class UploadFileComponent implements OnInit {
 
   onSelect(event: any) {
     if (event.rejectedFiles[0]) {
-      this.store.dispatch(setSnackbar({message: 'Incorrect file type selected!'}))
+      this.store.dispatch(setSnackbar({message: 'Incorrect file type selected!', state: 'error'}))
       return
     }
     this.onFileSelect.emit([...event.addedFiles][0])
@@ -41,6 +41,7 @@ export class UploadFileComponent implements OnInit {
     if (this.file) {
       const receipt: Receipt = mockData.data;
       this.store.dispatch(addReceipt(receipt))
+      this.store.dispatch(setSnackbar({message: 'File has been uploaded!', state: 'success'}))
       // (await this.procesFileService.addFile(this.file))
       // .subscribe((receiptResponse: ReceiptResponse) => {
       //   const receipt: Receipt = mockData.data;

@@ -170,3 +170,13 @@ $theme: (
 body {
   background-color: $theme-primary-background;
 }
+
+.mat-snack-bar-container {
+  color: white;
+  &.success {
+    background-color: green;
+  }
+  &.error {
+    background: red;
+  }
+}
