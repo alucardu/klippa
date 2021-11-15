@@ -7,7 +7,7 @@ import {MaterialModule} from '../material.module';
 
 import { AppComponent } from './app.component';
 import { UploadFileComponent } from './shared/components/upload-file/upload-file.component';
-import { ViewFilesComponent } from './shared/components/view-files/view-files.component';
+import { ViewFilesComponent, DialogContentExampleDialog } from './shared/components/view-files/view-files.component';
 import { receiptReducer }  from './state/file-state/file-state.reducer';
 import { LoaderComponent } from './shared/components/loader/loader.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,7 @@ import { FilePreviewComponent } from './shared/components/file-preview/file-prev
     AppComponent,
     UploadFileComponent,
     ViewFilesComponent,
+    DialogContentExampleDialog,
     LoaderComponent,
     SnackbarComponent,
     FilePreviewComponent

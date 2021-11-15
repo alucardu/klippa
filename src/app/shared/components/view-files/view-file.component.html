@@ -1,0 +1,24 @@
+<div class='view-file'>
+  <div>
+    <p>Bedrag: <span>{{receipt?.amount}}</span></p>
+    <p>Wisselgeld: <span>{{receipt?.amount_change}}</span></p>
+    <p>Fooi: <span>{{receipt?.amount_tip}}</span></p>
+    <p>Bedrag exc BTW: <span>{{receipt?.amountexvat}}</span></p>
+    <p>Munteenheid: <span>{{receipt?.currency}}</span></p>
+    <p>Bedrijfsnaam: <span>{{receipt?.merchant_name}}</span></p>
+    <p>Aankoopdatum: <span>{{receipt?.purchasedate}}</span></p>
+    <p>Aankooptijd: <span>{{receipt?.purchasetime}}</span></p>
+    <p>BTW bedrag: <span>{{receipt?.vatamount}}</span></p>
+    <p>Producten:</p>
+  </div>
+  <ul class='products'>
+    <li *ngFor="let lines of receipt?.lines">
+      <ul class='product' *ngFor="let line of lines.lineitems">
+        <li><p>Product: {{line.title}}</p></li>
+        <li><p>Bedrag: {{line.amount}}</p></li>
+        <li><p>Aantal: {{line.quantity}}</p></li>
+        <li><p>Bedrag elk: {{line.amount_each}}</p></li>
+      </ul>
+    </li>
+  </ul>
+</div>

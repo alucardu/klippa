@@ -1,0 +1,27 @@
+@import '../../../../theme.scss';
+
+.view-files {
+  list-style: none;
+  padding: 0;
+  li {
+    background-color: white;
+    padding: 16px;
+    padding-left: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    > span {
+      width: 150px;
+      margin: 0;
+    }
+  }
+  > li.file {
+    padding-left: 0px;
+    font-weight: 100;
+    cursor: pointer;
+    .mat-icon {
+      margin-right: 8px;
+    }
+  }
+}

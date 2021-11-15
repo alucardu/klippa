@@ -1,0 +1,44 @@
+@import '../../../../theme.scss';
+
+.view-file {
+  list-style: none;
+  padding: 0;
+  > div {
+    background-color: $theme-primary-background;
+    padding: 8px 0 0 8px;
+    border-radius: 8px;
+    > p {
+      width: 250px;
+      margin: 0 0 8px 0;
+      &:last-child {
+        padding-left: 8px;
+        margin-top: 16px;
+        font-weight: 900;
+      }
+      span {
+        float: right;
+        font-weight: 500;
+      }
+    }
+  }
+  .products {
+    list-style: none;
+    padding-left: 0px;
+    li {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .product {
+      background-color: $theme-primary-background-darker;
+      padding: 8px;
+      border-radius: 8px;
+      margin: 0 8px 8px 0;
+      li {
+      list-style: none;
+        p {
+          margin: 0 0 8px 0;
+        }
+      }
+    }
+  }
+}
