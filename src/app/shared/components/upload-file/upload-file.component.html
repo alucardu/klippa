@@ -19,4 +19,5 @@
   [disabled]='btnDisabled'
 >Opslaan</button>
 
-<app-loader [loading]='loading'></app-loader>
+
+<app-loader *ngIf="loading"></app-loader>

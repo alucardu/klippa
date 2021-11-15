@@ -1,5 +1,9 @@
 @import '../../../../theme.scss';
 
+:host {
+  position: relative;
+}
+
 div {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,7 @@ div {
 
 button {
   width: 100%;
-  margin: 8px 0;
+  margin: 8px 0 0 0;
 }
 
 .custom-dropzone {
