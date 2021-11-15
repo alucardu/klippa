@@ -10,7 +10,7 @@ import { ReceiptResponse } from 'src/app/models/klippa.models';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'X-Auth-Key': environment.apiKey,
+    'X-Auth-Key': environment.API_KEY,
   })
 };
 
@@ -25,7 +25,7 @@ export class ProcessFileService {
     const body = {
       document: [(await this.getBase64(file)).split(',')[1]],
     }
-    return this.http.post<ReceiptResponse>(environment.parseDocumentUrl, body, httpOptions)
+    return this.http.post<ReceiptResponse>(environment.API_URL, body, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
