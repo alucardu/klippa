@@ -25,15 +25,10 @@ export class ViewFilesComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog(receipt: Receipt) {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog, {
+    this.dialog.open(DialogContentExampleDialog, {
       data: {receipt: receipt}
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
-
 }
 
 @Component({
@@ -49,6 +44,5 @@ export class DialogContentExampleDialog {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.receipt = data.receipt
-    console.log(this.receipt)
   }
 }

@@ -12,8 +12,8 @@
     display: flex;
     align-items: center;
     font-weight: 500;
-    > span {
-      width: 150px;
+    span:first-of-type {
+      width: 250px;
       margin: 0;
     }
   }
