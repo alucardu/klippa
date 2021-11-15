@@ -61,7 +61,7 @@ export class UploadFileComponent implements OnInit {
     this.onFileSelect.emit(null)
     this.btnDisabled = true
     this.file = null as any
-    this.loading = false
+    this.loading = true
   }
 
   ngOnInit(): void {}
