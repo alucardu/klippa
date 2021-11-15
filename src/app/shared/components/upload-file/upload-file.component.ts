@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Receipt, ReceiptResponse } from 'src/app/models/klippa.models';
 
@@ -15,6 +15,9 @@ import mockData from '../../../../mockdata'
 })
 
 export class UploadFileComponent implements OnInit {
+  @Output()
+  public onFileSelect: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(
     private store: Store,
     private procesFileService: ProcessFileService
@@ -29,6 +32,7 @@ export class UploadFileComponent implements OnInit {
       this.store.dispatch(setSnackbar({message: 'Incorrect file type selected!'}))
       return
     }
+    this.onFileSelect.emit([...event.addedFiles][0])
     this.file = [...event.addedFiles][0]
     this.btnDisabled = false
   }
@@ -53,6 +57,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   clearInput = () => {
+    this.onFileSelect.emit(null)
     this.btnDisabled = true
     this.file = null as any
     this.loading = false
