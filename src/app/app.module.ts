@@ -16,6 +16,7 @@ import { snackbarReducer } from './state/snackbar-state/snackbar-state.reducers'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FilePreviewComponent } from './shared/components/file-preview/file-preview.component';
+import { UploadReceiptComponent } from './features/upload-receipt/upload-receipt.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilePreviewComponent } from './shared/components/file-preview/file-prev
     DialogContentExampleDialog,
     LoaderComponent,
     SnackbarComponent,
-    FilePreviewComponent
+    FilePreviewComponent,
+    UploadReceiptComponent
   ],
   imports: [
     BrowserModule,

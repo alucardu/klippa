@@ -2,12 +2,13 @@
 
 .view-files {
   list-style: none;
-  padding: 0;
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
   li {
-    background-color: white;
-    padding: 16px;
-    padding-left: 30px;
     border-radius: 8px;
+    padding: 16px;
+    padding-left: 38px;
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -17,11 +18,15 @@
     }
   }
   > li.file {
-    padding-left: 0px;
+    padding-left: 8px;
     font-weight: 100;
     cursor: pointer;
     .mat-icon {
       margin-right: 8px;
+    }
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background-color: $theme-primary-background-darker;
     }
   }
 }
