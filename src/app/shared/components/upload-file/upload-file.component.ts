@@ -6,8 +6,6 @@ import { ProcessFileService } from 'src/app/shared/services/proces-file/process-
 import { addReceipt } from 'src/app/state/file-state/file-state.actions';
 import { setSnackbar } from 'src/app/state/snackbar-state/snackbar-state.actions';
 
-import mockData from '../../../../mockdata'
-
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -39,21 +37,16 @@ export class UploadFileComponent implements OnInit {
 
   submit = async (): Promise<void> => {
     if (this.file) {
-      const receipt: Receipt = mockData.data;
-      this.store.dispatch(addReceipt(receipt))
-      this.store.dispatch(setSnackbar({message: 'File has been uploaded!', state: 'success'}))
-      // (await this.procesFileService.addFile(this.file))
-      // .subscribe((receiptResponse: ReceiptResponse) => {
-      //   const receipt: Receipt = mockData.data;
-      //   this.store.dispatch(addReceipt({merchant_name: 'google'}))
-      //   this.store.dispatch(setSnackbar({message: 'File has been uploaded!'}))
-      //   this.clearInput()
-      // }, (err: any) => {
-      //   this.clearInput()
-      //   this.store.dispatch(setSnackbar({message: err}))
-      // })
+      (await this.procesFileService.addFile(this.file))
+      .subscribe((receiptResponse: ReceiptResponse) => {
+        this.store.dispatch(addReceipt(receiptResponse.data))
+        this.store.dispatch(setSnackbar({message: 'File has been uploaded!', state: 'success'}))
+        this.clearInput()
+      }, (err: any) => {
+        this.clearInput()
+        this.store.dispatch(setSnackbar({message: err, state: 'error'}))
+      })
       this.loading = true;
-      this.clearInput()
     }
   }
 
@@ -61,7 +54,7 @@ export class UploadFileComponent implements OnInit {
     this.onFileSelect.emit(null)
     this.btnDisabled = true
     this.file = null as any
-    this.loading = true
+    this.loading = false
   }
 
   ngOnInit(): void {}

@@ -1,1 +1,13 @@
-<object class='file-preview' *ngIf='preview' [data]="previewUrl()" type="application/pdf">
+<object
+  class='file-preview'
+  *ngIf="preview && type === 'pdf'"
+  [data]="previewUrl()"
+>
+</object>
+
+<div
+  class='file-preview'
+  *ngIf="preview && type === 'image'">
+  <img [src]='previewUrl()' />
+</div>
+

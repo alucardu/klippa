@@ -9,12 +9,18 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 export class FilePreviewComponent implements OnInit {
   @Input() preview?: any
+  type?: string
 
   constructor(
     private sanitizer: DomSanitizer
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    this.type = this.preview?.type === 'application/pdf' ? 'pdf' : 'image'
+  }
 
   previewUrl() {
     if (this.preview) return this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(this.preview));
